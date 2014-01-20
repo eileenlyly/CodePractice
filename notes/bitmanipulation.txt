@@ -1,0 +1,53 @@
+有6种位运算：
+   &   与运算
+   |   或运算
+   ^   异或运算
+   ~   非运算(求补)
+  >>   右移运算
+  <<   左移运算
+
+
+1.获得int型最大值
+
+int getMaxInt(){  
+        return (1 << 31) - 1;//2147483647
+
+int getMaxInt(){  
+    return ~(1 << 31);//2147483647  
+}  
+
+int getMaxInt(){  
+    return ((unsigned int) - 1) >> 1;//2147483647  
+} 
+
+2.获得int型最小值
+
+int getMinInt(){  
+    return 1 << 31;//-2147483648  
+ }  
+
+6.乘以/除以2的m次方
+
+int mulTwoPower(int n,int m){//计算n*(2^m)  
+    return n << m;  
+}
+int divTwoPower(int n,int m){//计算n/(2^m)  
+    return n >> m;  
+}
+
+8.判断一个数的奇偶性
+
+boolean isOddNumber(int n){  
+    return (n & 1) == 1;  
+} 
+ 
+9.不用临时变量交换两个数（面试常考）
+
+C语言版
+void swap(int *a,int *b){     
+    (*a) ^= (*b) ^= (*a) ^= (*b);     
+}  
+通用版（一些语言中得分开写）
+a ^= b;  
+b ^= a;  
+a ^= b;  
