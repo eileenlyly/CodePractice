@@ -1,12 +1,56 @@
 Chapter 1 | Arrays and Strings
+*ArrayList<Integer>.size()
+*String.length()
+*char[] cannot get length directly
 
-1.1 Implement an algorithm to determine if a string has all unique characters. What if you cannot use additional data structures?1.2 Implement a function void reverse(char* str) in C or C++ which reverses a null- terminated string.1.3 Given two strings, write a method to decide if one is a permutation of the other.1.4 Write a method to replace all spaces in a string with'%20'. You may assume that the string has sufficient space at the end of the string to hold the additional characters, and that you are given the "true" length of the string. (Note: if imple- menting in Java, please use a character array so that you can perform this opera- tion in place.)EXAMPLEInput: "Mr John Smith Output: "Mr%20Dohn%20Smith"1.5 Implement a method to perform basic string compression using the counts of repeated characters. For example, the string aabcccccaaa would become a2blc5a3. If the "compressed" string would not become smaller than the orig- inal string, your method should return the original string.1.6 Given an image represented by an NxN matrix, where each pixel in the image is 4 bytes, write a method to rotate the image by 90 degrees. Can you do this in place?1.7 Write an algorithm such that if an element in an MxN matrix is 0, its entire row and column are set to 0.
+1.1 Implement an algorithm to determine if a string has all unique characters. What if you cannot use additional data structures?HINT: 
+- check length first!
+- create an array of boolean if the character set is limit, may use bit operation: time O(n), space O(1)
+- search every character in the string: time O(n^2), space O(1)
+- sort and check: time O(nlgn), space O(1)
+1.2 Implement a function void reverse(char* str) in C or C++ which reverses a null- terminated string.
+
+HINT:
+- be aware of the null terminate '\0'
+- Find the end of char[] and swap
+- use pointer1.3 Given two strings, write a method to decide if one is a anagram/permutation置换 of the other.
+
+HINT:
+- Ask about details: case sensitive? ignore space?
+- check length first!
+- sort and compare java.util.Arrays.sort(char *)
+- count each character
+- string.toCharArray()1.4 Write a method to replace all spaces in a string with'%20'. You may assume that the string has sufficient space at the end of the string to hold the additional characters, and that you are given the "true" length of the string. (Note: if imple- menting in Java, please use a character array so that you can perform this opera- tion in place.)EXAMPLEInput: "Mr John Smith Output: "Mr%20Dohn%20Smith"
+
+HINT:
+- don't forget to put the null terminate '\0' in the back
+- write backwards1.5 Implement a method to perform basic string compression using the counts of repeated characters. For example, the string aabcccccaaa would become a2blc5a3. If the "compressed" string would not become smaller than the original string, your method should return the original string.
+
+HINT:
+- Use string buffer to speed up string append
+- get the length compressed char[] first help : time O(n), space O(n)
+- get the size of integer: String.valueOf(count). length()1.6 Given an image represented by an NxN matrix, where each pixel in the image is 4 bytes, write a method to rotate the image by 90 degrees. Can you do this in place?
+
+HINT:
+-think of how to swap cells right1.7 Write an algorithm such that if an element in an MxN matrix is 0, its entire row and column are set to 0.
+
+HINT:
+- iterate through the matrix first
 
 1.8 Assume you have a method isSubstring which checks if one word is a substring of another. Given two strings, s1 and s2, write code to check if s2 is a rotation of s1 using only one call to isSubstring (i.e., “waterbottle” is a rotation of “erbottlewat”).
 
-Chapter 2 | Linked Lists
+HINT:
+- s2 is substring of s1+s1
 
-2.1 Write code to remove duplicates from an unsorted linked list. FOLLOW UP How would you solve this problem if a temporary buffer is not allowed?
+Chapter 2 | Linked Lists
+*Singly linked or doubly linked?
+
+2.1 Write code to remove duplicates from an unsorted linked list. 
+FOLLOW UP How would you solve this problem if a temporary buffer is not allowed?
+
+HINT:
+- Hashtable table.containskey(); table.put(data,true)
+- use two pointers to iterate and delete
 
 2.2 Implement an algorithm to find the nth to last element of a singly linked list.
 
