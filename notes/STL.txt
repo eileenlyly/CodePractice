@@ -1,0 +1,103 @@
+STL can be categorized into the following groupings:
+
+Container classes:
+Sequences:
+vector: (this tutorial) Dynamic array of variables, struct or objects. Insert data at the end. 
+(also see the YoLinux.com tutorial on using and STL list and boost ptr_list to manage pointers.)
+deque: Array which supports insertion/removal of elements at beginning or end of array
+list: (this tutorial) Linked list of variables, struct or objects. Insert/remove anywhere.
+Associative Containers:
+set (duplicate data not allowed in set), multiset (duplication allowed): Collection of ordered data in a balanced binary tree structure. Fast search.
+map (unique keys), multimap (duplicate keys allowed): Associative key-value pair held in balanced binary tree structure.
+
+Container adapters:
+stack LIFO
+queue FIFO
+priority_queue returns element with highest priority.
+String:
+string: Character strings and manipulation
+rope: String storage and manipulation
+bitset: Contains a more intuitive method of storing and manipulating bits.
+
+Operations/Utilities:
+iterator: (examples in this tutorial) STL class to represent position in an STL container. An iterator is declared to be associated with a single container class type.
+algorithm: Routines to find, count, sort, search, ... elements in container classes
+auto_ptr: Class to manage memory pointers and avoid memory leaks.
+
+Constructor/Declaration:
+
+Method/operator	Description
+vector<T> v;	Vector declaration of data type "T".
+vector<T> v(size_type n);	Declaration of vector containing type "T" and of size "n" (quantity).
+vector<T> v(size_type n,const T& t);	Declaration of vector containing type "T", of size "n" (quantity) containing value "t".
+Declaration: vector(size_type n, const T& t)
+vector<T> v(begin_iterator,end_iterator);	Copy of Vector of data type "T" and range begin_iterator to end_iterator.
+Declaration: template vector(InputIterator, InputIterator)
+Size methods/operators:
+
+Method/operator	Description
+empty()	Returns bool (true/false). True if empty.
+Declaration: bool empty() const
+size()	Number of elements of vector.
+Declaration: size_type size() const
+resize(n, t=T())	Adjust by adding or deleting elements of vector so that its size is "n".
+Declaration: void resize(n, t = T())
+capacity()	Max number of elements of vector before reallocation.
+Declaration: size_type capacity() const
+reserve(size_t n)	Max number of elements of vector set to "n" before reallocation.
+Declaration: void reserve(size_t)
+max_size()	Max number of elements of vector possible.
+Declaration: size_type max_size() const Note: size_type is an unsigned integer.
+Other methods/operators:
+
+Method/operator	Description
+erase()
+clear()	Erase all elements of vector.
+Declaration: void clear()
+erase(iterator)
+erase(begin_iterator,end_iterator)	Erase element of vector. Returns iterator to next element.
+Erase element range of vector. Returns iterator to next element.
+Declarations:
+iterator erase(iterator pos)
+iterator erase(iterator first, iterator last)
+=
+Example: X=Y()	Assign/copy entire contents of one vector into another.
+Declaration: vector& operator=(const vector&)
+<	Comparison of one vector to another.
+Declaration: bool operator<(const vector&, const vector&)
+==	Returns bool. True if every element is equal.
+Declaration: bool operator==(const vector&, const vector&)
+at(index)
+v[index]	Element of vector. Left and Right value assignment: v.at(i)=e; and e=v.at(i);
+Declaration: reference operator[](size_type n)
+front()
+v[0]	First element of vector. (Left and Right value assignment.)
+Declaration: reference front()
+back()	Last element of vector. (Left and Right value assignment.)
+Declaration: reference back()
+push_back(const T& value)	Add element to end of vector.
+Declaration: void push_back(const T&)
+pop_back()	Remove element from end of vector.
+Declaration: void pop_back()
+assign(size_type n,const T& t)	Assign first n elements a value "t".
+assign(begin_iterator,end_iterator)	Replace data in range defined by iterators.
+Declaration:
+insert(iterator, const T& t)	Insert at element "iterator", element of value "t".
+Declaration: iterator insert(iterator pos, const T& x)
+insert(iterator pos, size_type n, const T& x)	Starting before element "pos", insert first n elements of value "x".
+Declaration: void insert(iterator pos, size_type n, const T& x)
+insert(iterator pos, begin_iterator,end_iterator)	Starting before element "pos", insert range begin_iterator to end_iterator.
+Declaration: void insert(iterator pos, InputIterator f, InputIterator l)
+swap(vector& v2)	Swap contents of two vectors.
+Declaration: void swap(vector&) Iterator methods/operators:
+Method/operator	Description
+begin()	Return iterator to first element of vector.
+Declaration: const_iterator begin() const
+end()	Return iterator to end of vector (not last element of vector but past last element)
+Declaration: const_iterator end() const
+rbegin()	Return iterator to first element of vector (reverse order).
+Declaration: const_reverse_iterator rbegin() const
+rend()	Return iterator to end of vector (not last element but past last element) (reverse order).
+Declaration: const_reverse_iterator rend() const
+++	Increment iterator.
+--	Decrement iterator.
