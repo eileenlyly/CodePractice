@@ -1,0 +1,40 @@
+考虑4点：
+1. 返回类型为reference可以连续赋值
+2. 自身赋值
+3. 内存释放
+4. 传参为const引用（被引用对象值不可改变）
+
+MyString& MyString::operation = (const MyString &s){
+	if(this == &s) return *this;
+	else {
+		delete[] string;
+		string = null;
+		string = new string(size);
+		string = s.getstring();
+		return *this;
+	}
+}
+
+const引用
+
+（1）       在实际的程序中，引用主要被用做函数的形式参数--通常将类对象传递给一个函数.引用必须初始化. 但是用对象的地址初始化引用是错误的，我们可以定义一个指针引用。
+1 int ival = 1092;
+2 int &re = ival;   //ok
+3 int &re2 = &ival;   //错误
+4 int *pi = &ival;
+5 int *&pi2 = pi;   //ok
+（2）       一旦引用已经定义，它就不能再指向其他的对象.这就是为什么它要被初始化的原因。
+（3）       const引用可以用不同类型的对象初始化(只要能从一种类型转换到另一种类型即可)，也可以是不可寻址的值，如文字常量。例如
+double dval = 3.14159;
+//下3行仅对const引用才是合法的
+const int &ir = 1024;
+const int &ir2 = dval;
+const double &dr = dval + 1.0;
+上面，同样的初始化对于非const引用是不合法的，将导致编译错误。原因有些微妙，需要适当做些解释。
+引用在内部存放的是一个对象的地址，它是该对象的别名。对于不可寻址的值，如文字常量，以及不同类型的对象，编译器为了实现引用，必须生成一个临时对象，引用实际上指向该对象，但用户不能访问它。
+例如:
+double dval = 23;
+const int &ri = dval;
+编译器将其转换为:
+int tmp = dval; // double -> int
+const int &ri = tmp;
